@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import dns from "dns";
+
+dns.setDefaultResultOrder("ipv4first");
 
 // Add or remove recipient emails here directly
 const ENQUIRY_RECIPIENTS = ['amish.renorajewels@gmail.com', 'renish.renorajewels@gmail.com', 'umang.renorajewels@gmail.com', 'jewels.renora@gmail.com'];
@@ -12,7 +15,6 @@ const transporter = nodemailer.createTransport({
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS,
   },
-  family: 4, // force IPv4 — Render doesn't support IPv6 outbound
   connectionTimeout: 10_000,
   greetingTimeout: 10_000,
   socketTimeout: 15_000,
