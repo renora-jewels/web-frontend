@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Heart, ShoppingCart } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
 
@@ -15,6 +16,7 @@ const products = [
 
 function ProductCard({ name, price, img }: { name: string; price: string; img: string }) {
   const [wished, setWished] = useState(false);
+  const router = useRouter();
 
   return (
     <div className="group flex flex-col bg-white border border-gray-100">
@@ -26,7 +28,7 @@ function ProductCard({ name, price, img }: { name: string; price: string; img: s
           className="object-cover group-hover:scale-105 transition-transform duration-500"
         />
         <button
-          onClick={() => setWished(!wished)}
+          onClick={() => { setWished(!wished); router.push("/contact"); }}
           className="absolute top-3 right-3 p-1 transition-colors"
         >
           <Heart
@@ -40,7 +42,10 @@ function ProductCard({ name, price, img }: { name: string; price: string; img: s
       <div className="flex flex-col items-center py-4 px-3 text-center gap-1">
         <h3 className="text-[13px] font-medium text-[#1a1a1a]">{name}</h3>
         <p className="text-[13px] text-[#555]">{price}</p>
-        <button className="mt-2 border border-[#ccc] text-[9px] tracking-[0.2em] px-5 py-2 flex items-center gap-2 text-[#3a3a3a] hover:border-[#7B3030] hover:text-[#7B3030] transition-colors font-semibold">
+        <button
+          onClick={() => router.push("/contact")}
+          className="mt-2 border border-[#ccc] text-[9px] tracking-[0.2em] px-5 py-2 flex items-center gap-2 text-[#3a3a3a] hover:border-[#7B3030] hover:text-[#7B3030] transition-colors font-semibold"
+        >
           ADD TO CART <ShoppingCart size={11} strokeWidth={1.5} />
         </button>
       </div>

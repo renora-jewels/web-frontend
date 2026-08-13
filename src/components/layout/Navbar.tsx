@@ -2,10 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import {
-  Search,
-  User,
   Heart,
   ShoppingBag,
   ChevronDown,
@@ -24,6 +23,7 @@ const navLinks = [
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const router = useRouter();
 
   return (
     <header className="bg-white sticky top-0 z-50 border-b border-gray-100 shadow-sm">
@@ -59,16 +59,10 @@ export default function Navbar() {
 
         {/* Icons */}
         <div className="flex items-center gap-4 shrink-0">
-          <button className="hidden sm:block text-[#3a3a3a] hover:text-[#7B3030] transition-colors">
-            <Search size={17} strokeWidth={1.5} />
-          </button>
-          <button className="hidden sm:block text-[#3a3a3a] hover:text-[#7B3030] transition-colors">
-            <User size={17} strokeWidth={1.5} />
-          </button>
-          <button className="hidden sm:block text-[#3a3a3a] hover:text-[#7B3030] transition-colors">
+          <button onClick={() => router.push("/contact")} className="hidden sm:block text-[#3a3a3a] hover:text-[#7B3030] transition-colors">
             <Heart size={17} strokeWidth={1.5} />
           </button>
-          <button className="relative text-[#3a3a3a] hover:text-[#7B3030] transition-colors">
+          <button onClick={() => router.push("/contact")} className="relative text-[#3a3a3a] hover:text-[#7B3030] transition-colors">
             <ShoppingBag size={17} strokeWidth={1.5} />
             <span className="absolute -top-2 -right-2 bg-[#7B3030] text-white text-[9px] rounded-full w-4 h-4 flex items-center justify-center font-semibold">
               0
