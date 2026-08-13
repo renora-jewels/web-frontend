@@ -3,10 +3,14 @@ import { Resend } from "resend";
 
 // Add or remove recipient emails here directly
 const ENQUIRY_RECIPIENTS = [
+  "jewels.renora@gmail.com"
+];
+
+// CC recipients for every enquiry email
+const ENQUIRY_CC: string[] = [
   "amish.renorajewels@gmail.com",
   "renish.renorajewels@gmail.com",
-  "umang.renorajewels@gmail.com",
-  "jewels.renora@gmail.com",
+  "umang.renorajewels@gmail.com"
 ];
 
 let resend: Resend | null = null;
@@ -211,6 +215,7 @@ export async function POST(req: NextRequest) {
       getResend().emails.send({
         from,
         to: ENQUIRY_RECIPIENTS,
+        cc: ENQUIRY_CC,
         replyTo: email,
         subject: `New Enquiry: ${subject}`,
         html: buildEnquiryHtml(name, email, subject, message),
