@@ -140,7 +140,7 @@ function buildThankYouHtml(name: string, subject: string) {
           <tr><td style="height:3px;background:linear-gradient(to right,#c9a96e,#e8c98a,#c9a96e);"></td></tr>
           <tr>
             <td style="padding:44px 40px 32px;text-align:center;">
-              <img src="https://www.renorajewels.in/logo/logo.jpg" alt="Renora Jewels" width="110" style="display:block;margin:0 auto 28px;width:110px;height:auto;" />
+              <img src="https://www.renorajewels.in/logo/logo.png" alt="Renora Jewels" width="110" style="display:block;margin:0 auto 28px;width:110px;height:auto;" />
               <p style="margin:0 0 12px;font-size:20px;color:#1a1a1a;font-family:'Georgia',serif;letter-spacing:0.05em;">
                 Dear ${escapeHtml(name)},
               </p>
