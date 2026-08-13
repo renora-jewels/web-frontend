@@ -1,24 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
-import nodemailer from "nodemailer";
-import dns from "dns";
-
-dns.setDefaultResultOrder("ipv4first");
+import { Resend } from "resend";
 
 // Add or remove recipient emails here directly
-const ENQUIRY_RECIPIENTS = ['amish.renorajewels@gmail.com', 'renish.renorajewels@gmail.com', 'umang.renorajewels@gmail.com', 'jewels.renora@gmail.com'];
+const ENQUIRY_RECIPIENTS = [
+  "amish.renorajewels@gmail.com",
+  "renish.renorajewels@gmail.com",
+  "umang.renorajewels@gmail.com",
+  "jewels.renora@gmail.com",
+];
 
-const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST,
-  port: 587,
-  secure: false, // STARTTLS — upgrades after connection
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
-  },
-  connectionTimeout: 10_000,
-  greetingTimeout: 10_000,
-  socketTimeout: 15_000,
-} as nodemailer.TransportOptions);
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 function escapeHtml(str: string) {
   return str
@@ -29,7 +20,6 @@ function escapeHtml(str: string) {
     .replace(/'/g, "&#039;");
 }
 
-// Email sent to the Renora team with full enquiry details
 function buildEnquiryHtml(name: string, email: string, subject: string, message: string) {
   return `<!DOCTYPE html>
 <html lang="en">
@@ -43,8 +33,6 @@ function buildEnquiryHtml(name: string, email: string, subject: string, message:
     <tr>
       <td align="center">
         <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#ffffff;border:1px solid #e8ddd4;">
-
-          <!-- Header -->
           <tr>
             <td style="background:#1a1a1a;padding:32px 40px;text-align:center;">
               <p style="margin:0;color:#c9a96e;font-size:10px;letter-spacing:0.4em;text-transform:uppercase;font-family:Arial,sans-serif;font-weight:600;">Renora Jewels</p>
@@ -53,8 +41,6 @@ function buildEnquiryHtml(name: string, email: string, subject: string, message:
             </td>
           </tr>
           <tr><td style="height:3px;background:linear-gradient(to right,#c9a96e,#e8c98a,#c9a96e);"></td></tr>
-
-          <!-- Intro -->
           <tr>
             <td style="padding:36px 40px 20px;">
               <p style="margin:0;font-size:13px;color:#666;font-family:Arial,sans-serif;line-height:1.7;">
@@ -62,8 +48,6 @@ function buildEnquiryHtml(name: string, email: string, subject: string, message:
               </p>
             </td>
           </tr>
-
-          <!-- Detail Cards -->
           <tr>
             <td style="padding:0 40px;">
               <table width="100%" cellpadding="0" cellspacing="0">
@@ -98,8 +82,6 @@ function buildEnquiryHtml(name: string, email: string, subject: string, message:
               </table>
             </td>
           </tr>
-
-          <!-- Reply CTA -->
           <tr>
             <td style="padding:32px 40px;text-align:center;">
               <a href="mailto:${escapeHtml(email)}?subject=Re: ${escapeHtml(subject)}"
@@ -108,7 +90,6 @@ function buildEnquiryHtml(name: string, email: string, subject: string, message:
               </a>
             </td>
           </tr>
-
           <tr><td style="height:3px;background:linear-gradient(to right,#c9a96e,#e8c98a,#c9a96e);"></td></tr>
           <tr>
             <td style="background:#1a1a1a;padding:24px 40px;text-align:center;">
@@ -120,7 +101,6 @@ function buildEnquiryHtml(name: string, email: string, subject: string, message:
               </p>
             </td>
           </tr>
-
         </table>
       </td>
     </tr>
@@ -129,7 +109,6 @@ function buildEnquiryHtml(name: string, email: string, subject: string, message:
 </html>`;
 }
 
-// Thank-you email sent back to the customer
 function buildThankYouHtml(name: string, subject: string) {
   return `<!DOCTYPE html>
 <html lang="en">
@@ -143,8 +122,6 @@ function buildThankYouHtml(name: string, subject: string) {
     <tr>
       <td align="center">
         <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#ffffff;border:1px solid #e8ddd4;">
-
-          <!-- Header -->
           <tr>
             <td style="background:#1a1a1a;padding:36px 40px;text-align:center;">
               <p style="margin:0;color:#c9a96e;font-size:10px;letter-spacing:0.4em;text-transform:uppercase;font-family:Arial,sans-serif;font-weight:600;">Renora Jewels</p>
@@ -153,13 +130,9 @@ function buildThankYouHtml(name: string, subject: string) {
             </td>
           </tr>
           <tr><td style="height:3px;background:linear-gradient(to right,#c9a96e,#e8c98a,#c9a96e);"></td></tr>
-
-          <!-- Body -->
           <tr>
             <td style="padding:44px 40px 32px;text-align:center;">
-              <!-- Diamond ornament -->
               <div style="width:32px;height:32px;margin:0 auto 28px;transform:rotate(45deg);border:1px solid #c9a96e;"></div>
-
               <p style="margin:0 0 12px;font-size:20px;color:#1a1a1a;font-family:'Georgia',serif;letter-spacing:0.05em;">
                 Dear ${escapeHtml(name)},
               </p>
@@ -175,8 +148,6 @@ function buildThankYouHtml(name: string, subject: string) {
               </p>
             </td>
           </tr>
-
-          <!-- CTA -->
           <tr>
             <td style="padding:0 40px 40px;text-align:center;">
               <a href="https://renorajewels.in/collections"
@@ -185,8 +156,6 @@ function buildThankYouHtml(name: string, subject: string) {
               </a>
             </td>
           </tr>
-
-          <!-- Divider with tagline -->
           <tr>
             <td style="padding:0 40px 36px;text-align:center;">
               <div style="border-top:1px solid #f0ebe5;padding-top:24px;">
@@ -196,10 +165,7 @@ function buildThankYouHtml(name: string, subject: string) {
               </div>
             </td>
           </tr>
-
           <tr><td style="height:3px;background:linear-gradient(to right,#c9a96e,#e8c98a,#c9a96e);"></td></tr>
-
-          <!-- Footer -->
           <tr>
             <td style="background:#1a1a1a;padding:24px 40px;text-align:center;">
               <p style="margin:0 0 6px;color:#c9a96e;font-size:9px;letter-spacing:0.3em;font-family:Arial,sans-serif;text-transform:uppercase;">Follow Us</p>
@@ -214,7 +180,6 @@ function buildThankYouHtml(name: string, subject: string) {
               </p>
             </td>
           </tr>
-
         </table>
       </td>
     </tr>
@@ -224,8 +189,8 @@ function buildThankYouHtml(name: string, subject: string) {
 }
 
 export async function POST(req: NextRequest) {
-  if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
-    console.error("[contact] SMTP env vars missing");
+  if (!process.env.RESEND_API_KEY) {
+    console.error("[contact] RESEND_API_KEY missing");
     return NextResponse.json({ error: "Email service not configured." }, { status: 503 });
   }
 
@@ -236,18 +201,19 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "All fields are required." }, { status: 400 });
     }
 
-    // Send enquiry to team + thank-you to customer in parallel
+    const from = "Renora Jewels <onboarding@resend.dev>";
+
     await Promise.all([
-      transporter.sendMail({
-        from: `"Renora Jewels" <${process.env.SMTP_USER}>`,
+      resend.emails.send({
+        from,
         to: ENQUIRY_RECIPIENTS,
         replyTo: email,
         subject: `New Enquiry: ${subject}`,
         html: buildEnquiryHtml(name, email, subject, message),
       }),
-      transporter.sendMail({
-        from: `"Renora Jewels" <${process.env.SMTP_USER}>`,
-        to: email,
+      resend.emails.send({
+        from,
+        to: [email],
         subject: `Thank you for contacting Renora Jewels`,
         html: buildThankYouHtml(name, subject),
       }),
@@ -255,8 +221,8 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ success: true });
   } catch (err) {
-    const message = err instanceof Error ? err.message : String(err);
+    const detail = err instanceof Error ? err.message : String(err);
     console.error("[contact] email send failed:", err);
-    return NextResponse.json({ error: "Failed to send message.", detail: message }, { status: 500 });
+    return NextResponse.json({ error: "Failed to send message.", detail }, { status: 500 });
   }
 }
