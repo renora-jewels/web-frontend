@@ -6,12 +6,15 @@ const ENQUIRY_RECIPIENTS = ['amish.renorajewels@gmail.com', 'renish.renorajewels
 
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
-  port: Number(process.env.SMTP_PORT),
-  secure: process.env.SMTP_SECURE === "true",
+  port: Number(process.env.SMTP_PORT) || 465,
+  secure: process.env.SMTP_SECURE !== "false",
   auth: {
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS,
   },
+  connectionTimeout: 10_000,
+  greetingTimeout: 10_000,
+  socketTimeout: 15_000,
 });
 
 function escapeHtml(str: string) {
@@ -218,6 +221,11 @@ function buildThankYouHtml(name: string, subject: string) {
 }
 
 export async function POST(req: NextRequest) {
+  if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
+    console.error("[contact] SMTP env vars missing");
+    return NextResponse.json({ error: "Email service not configured." }, { status: 503 });
+  }
+
   try {
     const { name, email, subject, message } = await req.json();
 
