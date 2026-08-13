@@ -12,10 +12,11 @@ const transporter = nodemailer.createTransport({
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS,
   },
+  family: 4, // force IPv4 — Render doesn't support IPv6 outbound
   connectionTimeout: 10_000,
   greetingTimeout: 10_000,
   socketTimeout: 15_000,
-});
+} as nodemailer.TransportOptions);
 
 function escapeHtml(str: string) {
   return str
