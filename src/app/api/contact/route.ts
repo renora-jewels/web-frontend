@@ -88,7 +88,7 @@ function buildEnquiryHtml(name: string, email: string, subject: string, message:
           </tr>
           <tr>
             <td style="padding:32px 40px;text-align:center;">
-              <a href="mailto:${escapeHtml(email)}?subject=Re: ${escapeHtml(subject)}"
+              <a href="https://mail.hostinger.com/?_task=mail&amp;_action=compose&amp;_to=${encodeURIComponent(email)}&amp;_subject=Re%3A%20${encodeURIComponent(subject)}"
                  style="display:inline-block;background:#7B3030;color:#ffffff;text-decoration:none;font-size:10px;letter-spacing:0.25em;font-family:Arial,sans-serif;font-weight:700;padding:14px 32px;">
                 REPLY TO CUSTOMER
               </a>
@@ -136,7 +136,7 @@ function buildThankYouHtml(name: string, subject: string) {
           <tr><td style="height:3px;background:linear-gradient(to right,#c9a96e,#e8c98a,#c9a96e);"></td></tr>
           <tr>
             <td style="padding:44px 40px 32px;text-align:center;">
-              <div style="width:32px;height:32px;margin:0 auto 28px;transform:rotate(45deg);border:1px solid #c9a96e;"></div>
+              <img src="https://www.renorajewels.in/logo/logo.jpg" alt="Renora Jewels" width="110" style="display:block;margin:0 auto 28px;width:110px;height:auto;" />
               <p style="margin:0 0 12px;font-size:20px;color:#1a1a1a;font-family:'Georgia',serif;letter-spacing:0.05em;">
                 Dear ${escapeHtml(name)},
               </p>
