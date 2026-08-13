@@ -9,7 +9,11 @@ const ENQUIRY_RECIPIENTS = [
   "jewels.renora@gmail.com",
 ];
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+let resend: Resend | null = null;
+function getResend() {
+  if (!resend) resend = new Resend(process.env.RESEND_API_KEY);
+  return resend;
+}
 
 function escapeHtml(str: string) {
   return str
@@ -201,17 +205,17 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "All fields are required." }, { status: 400 });
     }
 
-    const from = "Renora Jewels <onboarding@resend.dev>";
+    const from = "Renora Jewels <info@renorajewels.in>";
 
     await Promise.all([
-      resend.emails.send({
+      getResend().emails.send({
         from,
         to: ENQUIRY_RECIPIENTS,
         replyTo: email,
         subject: `New Enquiry: ${subject}`,
         html: buildEnquiryHtml(name, email, subject, message),
       }),
-      resend.emails.send({
+      getResend().emails.send({
         from,
         to: [email],
         subject: `Thank you for contacting Renora Jewels`,
