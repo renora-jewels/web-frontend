@@ -123,15 +123,19 @@ export default function Footer() {
           <ul className="flex flex-col gap-3 text-[12px] text-[#777]">
             <li className="flex items-start gap-2">
               <span>✉</span>
-              <span>hello@renorajewels.com</span>
+              <span>info@renorajewels.in</span>
             </li>
             <li className="flex items-start gap-2">
               <span>☎</span>
-              <span>+1 (555) 123-4567</span>
+              <span>+91 8160149309</span>
             </li>
             <li className="flex items-start gap-2">
-              <span>🌍</span>
-              <span>Worldwide Shipping</span>
+              <span>💬</span>
+              <span>+91 8160149309</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span>📍</span>
+              <span>Surat, Gujarat, India</span>
             </li>
           </ul>
         </div>
@@ -141,7 +145,7 @@ export default function Footer() {
       <div className="border-t border-gray-100 px-6 py-5">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-[11px] text-[#aaa]">
-            © 2024 Renora Jewels. All Rights Reserved.
+            © {new Date().getFullYear()} Renora Jewels. All Rights Reserved.
           </p>
           <div className="flex items-center gap-2">
             {paymentMethods.map((card) => (

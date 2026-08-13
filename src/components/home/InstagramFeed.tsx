@@ -19,14 +19,14 @@ export default function InstagramFeed() {
             FOLLOW US ON INSTAGRAM
           </h2>
           <p className="text-[#7B3030] text-[11px] tracking-[0.25em] font-semibold mt-1">
-            @renorajewels
+            @renora.jewels
           </p>
         </div>
         <div className="grid grid-cols-4 sm:grid-cols-7 gap-2">
           {posts.map(({ id, src }) => (
             <a
               key={id}
-              href="https://instagram.com"
+              href="https://instagram.com/renora.jewels"
               target="_blank"
               rel="noopener noreferrer"
               className="aspect-square overflow-hidden block group"
