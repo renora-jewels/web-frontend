@@ -68,7 +68,7 @@ export default function Footer() {
               alt="Renora Jewels"
               width={100}
               height={50}
-              className="h-13 w-auto mix-blend-multiply"
+              className="h-20 w-auto mix-blend-multiply"
             />
           </Link>
           <p className="text-[12px] text-[#777] leading-relaxed max-w-50">
