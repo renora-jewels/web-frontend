@@ -64,7 +64,7 @@ export default function Footer() {
         <div className="flex flex-col gap-4">
           <Link href="/">
             <Image
-              src="/logo/logo.jpg"
+              src="/logo/logo.png"
               alt="Renora Jewels"
               width={100}
               height={50}

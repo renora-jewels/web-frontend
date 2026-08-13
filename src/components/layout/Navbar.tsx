@@ -32,7 +32,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="shrink-0">
           <Image
-            src="/logo/logo.jpg"
+            src="/logo/logo.png"
             alt="Renora Jewels"
             width={110}
             height={55}
