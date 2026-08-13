@@ -9,8 +9,8 @@ const ENQUIRY_RECIPIENTS = ['amish.renorajewels@gmail.com', 'renish.renorajewels
 
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
-  port: Number(process.env.SMTP_PORT) || 465,
-  secure: process.env.SMTP_SECURE !== "false",
+  port: 587,
+  secure: false, // STARTTLS — upgrades after connection
   auth: {
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS,
