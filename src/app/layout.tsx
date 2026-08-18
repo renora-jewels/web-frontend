@@ -83,7 +83,7 @@ export const metadata: Metadata = {
     canonical: "https://www.renorajewels.in",
   },
   verification: {
-    google: "8sCXY2zrj3e-6kez",
+    google: "8sCXY2zrj3e-6kezlMhZkZX-QILmF10u389jAPB6tYE",
   },
 };
 
