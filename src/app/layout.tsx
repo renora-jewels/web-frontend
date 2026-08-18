@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   creator: "Renora Jewels",
   publisher: "Renora Jewels",
   icons: {
-    icon: "/logo/logo.png",
+    icon: [{ url: "/logo/logo.png", sizes: "any" }],
     apple: "/logo/logo.png",
   },
   robots: {
