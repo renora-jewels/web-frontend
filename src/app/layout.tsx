@@ -82,6 +82,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.renorajewels.in",
   },
+  verification: {
+    google: "8sCXY2zrj3e-6kez",
+  },
 };
 
 export default function RootLayout({
