@@ -1,6 +1,20 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import SectionHeading from "@/components/ui/SectionHeading";
+
+export const metadata: Metadata = {
+  title: "Jewellery Journal — Guides, Trends & Diamond Education",
+  description:
+    "Read the Renora Jewels journal for expert guides on choosing diamond rings, jewellery care tips, metal comparisons, the 4 Cs of diamonds, and custom jewellery ideas.",
+  alternates: { canonical: "https://www.renorajewels.in/blog" },
+  openGraph: {
+    title: "Jewellery Journal — Renora Jewels",
+    description:
+      "Expert guides, trends and diamond education from Renora Jewels. Learn about engagement rings, the 4 Cs, gold vs platinum & more.",
+    url: "https://www.renorajewels.in/blog",
+  },
+};
 
 const posts = [
   {

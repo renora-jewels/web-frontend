@@ -1,6 +1,20 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Scissors, Leaf, Gem, ShieldCheck } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "About Renora Jewels — Our Story & Craftsmanship",
+  description:
+    "Learn about Renora Jewels — our story, values, and commitment to expert craftsmanship, ethical diamond sourcing, and timeless fine jewellery at renorajewels.in.",
+  alternates: { canonical: "https://www.renorajewels.in/about" },
+  openGraph: {
+    title: "About Renora Jewels — Our Story & Craftsmanship",
+    description:
+      "Expert craftsmanship. Ethical sourcing. Certified diamonds. Discover the story behind Renora Jewels.",
+    url: "https://www.renorajewels.in/about",
+  },
+};
 
 const values = [
   { Icon: Scissors,   label: "EXPERT\nCRAFTSMANSHIP" },

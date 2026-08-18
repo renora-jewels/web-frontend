@@ -1,6 +1,20 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Truck, Gem, Lock, Heart, RotateCcw } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Jewellery Collections — Rings, Necklaces, Earrings & More",
+  description:
+    "Explore Renora Jewels' full collection of certified diamond jewellery — rings, necklaces, earrings, bracelets, bangles, pendants, chains & men's jewellery. Shop at renorajewels.in.",
+  alternates: { canonical: "https://www.renorajewels.in/collections" },
+  openGraph: {
+    title: "Jewellery Collections — Renora Jewels",
+    description:
+      "Shop rings, necklaces, earrings, bangles, bracelets & custom jewellery from Renora Jewels — certified diamonds, timeless designs.",
+    url: "https://www.renorajewels.in/collections",
+  },
+};
 
 const categories = [
   { label: "RINGS",          href: "/collections/rings",    img: "/collections/collections-category-rings.jpg" },
