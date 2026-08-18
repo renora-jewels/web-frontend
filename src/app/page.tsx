@@ -4,7 +4,7 @@ import Hero from "@/components/home/Hero";
 export const metadata: Metadata = {
   title: "Renora Jewels — Fine Diamond Jewellery | renorajewels.in",
   description:
-    "Renora Jewels — India's trusted destination for certified diamond rings, necklaces, earrings, bangles & custom jewellery. Shop timeless designs at renorajewels.in.",
+    "Renora Jewels — Shop certified diamond rings, necklaces, earrings, bangles and custom jewellery. Timeless elegance, exceptional craftsmanship. Visit renorajewels.in.",
   alternates: { canonical: "https://www.renorajewels.in" },
   openGraph: {
     title: "Renora Jewels — Fine Diamond Jewellery",

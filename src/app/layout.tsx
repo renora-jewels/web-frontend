@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: "%s | Renora Jewels",
   },
   description:
-    "Renora Jewels — India's trusted destination for certified diamond jewellery. Shop diamond rings, necklaces, earrings, bangles, bracelets & custom jewellery at renorajewels.in.",
+    "Renora Jewels — Shop certified diamond rings, necklaces, earrings, bangles and custom jewellery. Timeless elegance, exceptional craftsmanship. Visit renorajewels.in.",
   keywords: [
     "Renora Jewels",
     "Renora",
@@ -44,6 +44,10 @@ export const metadata: Metadata = {
   authors: [{ name: "Renora Jewels", url: "https://www.renorajewels.in" }],
   creator: "Renora Jewels",
   publisher: "Renora Jewels",
+  icons: {
+    icon: "/logo/logo.png",
+    apple: "/logo/logo.png",
+  },
   robots: {
     index: true,
     follow: true,
@@ -61,7 +65,7 @@ export const metadata: Metadata = {
     siteName: "Renora Jewels",
     title: "Renora Jewels — Fine Diamond Jewellery",
     description:
-      "India's trusted destination for certified diamond jewellery. Shop rings, necklaces, earrings, bangles & custom jewellery at renorajewels.in.",
+      "Shop certified diamond rings, necklaces, earrings, bangles and custom jewellery. Timeless elegance at renorajewels.in.",
     images: [
       {
         url: "/og-image.jpg",
@@ -75,7 +79,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Renora Jewels — Fine Diamond Jewellery",
     description:
-      "India's trusted destination for certified diamond jewellery. Shop rings, necklaces, earrings & more at renorajewels.in.",
+      "Shop certified diamond rings, necklaces, earrings and more at renorajewels.in.",
     images: ["/og-image.jpg"],
   },
   alternates: {
@@ -114,10 +118,10 @@ export default function RootLayout({
               "@type": "JewelryStore",
               name: "Renora Jewels",
               url: "https://www.renorajewels.in",
-              logo: "https://www.renorajewels.in/logo.png",
+              logo: "https://www.renorajewels.in/logo/logo.png",
               image: "https://www.renorajewels.in/og-image.jpg",
               description:
-                "India's trusted destination for certified diamond jewellery — rings, necklaces, earrings, bangles, bracelets & custom jewellery.",
+                "Shop certified diamond rings, necklaces, earrings, bangles and custom jewellery. Timeless elegance, exceptional craftsmanship at renorajewels.in.",
               telephone: "+91-XXXXXXXXXX",
               email: "hello@renorajewels.in",
               address: {
