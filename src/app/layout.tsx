@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Raleway } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 import TopBar from "@/components/layout/TopBar";
 import Navbar from "@/components/layout/Navbar";
@@ -93,18 +92,18 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${cormorant.variable} ${raleway.variable}`}>
       <head>
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-52W6P6SRXM"
-          strategy="afterInteractive"
+        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-52W6P6SRXM" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-52W6P6SRXM');
+            `,
+          }}
         />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-52W6P6SRXM');
-          `}
-        </Script>
       </head>
       <body className="flex flex-col min-h-screen">
         <script
