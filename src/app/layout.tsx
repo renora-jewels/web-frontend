@@ -129,8 +129,8 @@ export default function RootLayout({
                 addressCountry: "IN",
               },
               sameAs: [
-                "https://www.instagram.com/renorajewels",
-                "https://www.facebook.com/renorajewels",
+                "https://www.instagram.com/renora.jewels",
+                "https://www.facebook.com/jewels.renora",
               ],
               priceRange: "₹₹₹",
               currenciesAccepted: "INR",
