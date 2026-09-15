@@ -1,7 +1,7 @@
 import { Truck, Gem, Shield } from "lucide-react";
 
 const items = [
-  { Icon: Truck, label: "FREE SHIPPING WORLDWIDE" },
+  { Icon: Truck, label: "WORLDWIDE SHIPPING" },
   { Icon: Gem, label: "CERTIFIED DIAMONDS" },
   { Icon: Shield, label: "SECURE PAYMENTS" },
 ];

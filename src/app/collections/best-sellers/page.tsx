@@ -125,7 +125,7 @@ export default function BestSellersPage() {
 
       <section className="border-t border-gray-200 bg-white py-10 px-4">
         <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8 text-center">
-          {["FREE SHIPPING\nWORLDWIDE","CERTIFIED\nDIAMONDS","SECURE\nPAYMENTS","LIFETIME\nWARRANTY","EASY RETURNS\n30 DAYS"].map((label) => (
+          {["WORLDWIDE\nSHIPPING","CERTIFIED\nDIAMONDS","SECURE\nPAYMENTS","LIFETIME\nWARRANTY","EASY RETURNS\n30 DAYS"].map((label) => (
             <div key={label} className="flex flex-col items-center gap-2">
               <span className="text-[#7B3030] text-lg">◆</span>
               <span className="text-[10px] tracking-[0.12em] font-semibold text-[#1a1a1a] whitespace-pre-line leading-relaxed">

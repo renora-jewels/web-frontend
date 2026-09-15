@@ -125,8 +125,7 @@ export const metadata: Metadata = {
   publisher: "Renora Jewels",
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/logo/logo.jpg", type: "image/jpeg", sizes: "any" },
+      { url: "/logo/logo.jpg", type: "image/jpeg" },
     ],
     apple: "/logo/logo.jpg",
   },

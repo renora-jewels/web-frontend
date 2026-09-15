@@ -28,7 +28,7 @@ const categories = [
 ];
 
 const features = [
-  { Icon: Truck,      label: "FREE SHIPPING\nWORLDWIDE" },
+  { Icon: Truck,      label: "WORLDWIDE\nSHIPPING" },
   { Icon: Gem,        label: "CERTIFIED\nDIAMONDS" },
   { Icon: Lock,       label: "SECURE\nPAYMENTS" },
   { Icon: Heart,      label: "LIFETIME\nCARE" },
